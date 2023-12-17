@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, Redirect, Req, UseFilters, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, Redirect, Req, UseFilters, UseGuards, UsePipes } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Request } from 'express';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -8,8 +8,11 @@ import { ForbiddenExceptionFilter } from 'src/middleware/filters/forbidden-excep
 import { createCatSchema } from 'src/schemas/create-cat.schema';
 import { ZodValidationPipe } from 'src/middleware/pipes/zod-validation.pipe';
 import { ValidationPipe } from 'src/middleware/pipes/validation.pipe';
+import { RolesGuard } from 'src/middleware/guards/roles.guard';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('cats')
+@UseGuards(RolesGuard)
 export class CatsController {
     constructor(private readonly catsService: CatsService) {}    
 
@@ -25,6 +28,7 @@ export class CatsController {
 
     @Post()
     //@UsePipes(new ZodValidationPipe(createCatSchema))
+    @Roles(['admin'])
     public async create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
         this.catsService.create(createCatDto)
     }

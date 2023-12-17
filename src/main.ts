@@ -4,6 +4,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
 import { ForbiddenException } from './exceptions/forbiddend.exception';
 import { ForbiddenExceptionFilter } from './middleware/filters/forbidden-exception.filter';
 import { ValidationPipe } from './middleware/pipes/validation.pipe';
+import { RolesGuard } from './middleware/guards/roles.guard';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -16,6 +17,9 @@ async function bootstrap() {
 
     // сделать канал глобальным
     // app.useGlobalPipes(new ValidationPipe())
+
+    // сделать защитник глобальным
+    // app.useGlobalGuards(new RolesGuard())
     await app.listen(3000);
 }
 bootstrap();

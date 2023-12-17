@@ -9,7 +9,10 @@ export class ValidationPipe implements PipeTransform<any> {
             return value
         }
 
+        // преобразование аргумента в типизированный объект
         const object = plainToInstance(metadata.metatype, value)
+
+        // валидация
         const errors = await validate(object)
 
         if (errors.length > 0) {
