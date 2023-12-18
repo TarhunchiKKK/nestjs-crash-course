@@ -9,7 +9,12 @@ import {
     UseInterceptors,
 } from '@nestjs/common'
 import { CachingService } from './caching.service'
-import { CACHE_MANAGER, CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager'
+import {
+    CACHE_MANAGER,
+    CacheInterceptor,
+    CacheKey,
+    CacheTTL,
+} from '@nestjs/cache-manager'
 import { Cache } from 'cache-manager'
 import { HttpCacheInterceptor } from './http-cache.interceptor'
 

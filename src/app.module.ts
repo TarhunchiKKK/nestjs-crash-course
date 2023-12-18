@@ -12,6 +12,7 @@ import { CatsController } from './cats/cats.controller'
 import { ConfigModule } from '@nestjs/config'
 import { CacheModule } from '@nestjs/cache-manager'
 import { CachingModule } from './caching/caching.module'
+import { SerializationModule } from './serialization/serialization.module'
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { CachingModule } from './caching/caching.module'
             isGlobal: true, // сделать модуль глобальным
         }),
         CachingModule,
+        SerializationModule,
     ],
     controllers: [AppController],
     providers: [AppService],
