@@ -1,20 +1,20 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { LoggerMiddleware } from './middleware/logger.middleware';
-import { ForbiddenException } from './exceptions/forbiddend.exception';
-import { ForbiddenExceptionFilter } from './middleware/filters/forbidden-exception.filter';
-import { ValidationPipe } from './middleware/pipes/validation.pipe';
-import { RolesGuard } from './middleware/guards/roles.guard';
-import { LoggingInterceptor } from './middleware/interceptors/logging.interceptor';
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app.module'
+import { LoggerMiddleware } from './middleware/logger.middleware'
+import { ForbiddenException } from './exceptions/forbiddend.exception'
+import { ForbiddenExceptionFilter } from './middleware/filters/forbidden-exception.filter'
+import { RolesGuard } from './middleware/guards/roles.guard'
+import { LoggingInterceptor } from './middleware/interceptors/logging.interceptor'
+import { ValidationPipe } from '@nestjs/common'
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
-    
+    const app = await NestFactory.create(AppModule)
+
     // сделать промежуточное ПО глобальным
-    // app.use(LoggerMiddleware)                            
+    // app.use(LoggerMiddleware)
 
     // сделать фильтр исключений глобальным
-    // app.useGlobalFilters(new ForbiddenExceptionFilter()) 
+    // app.useGlobalFilters(new ForbiddenExceptionFilter())
 
     // сделать канал глобальным
     // app.useGlobalPipes(new ValidationPipe())
@@ -24,6 +24,8 @@ async function bootstrap() {
 
     // сделать перехватчик глобальным
     // app.useGlobalInterceptors(new    LoggingInterceptor())
-    await app.listen(3000);
+
+    app.useGlobalPipes(new ValidationPipe())
+    await app.listen(3000)
 }
-bootstrap();
+bootstrap()

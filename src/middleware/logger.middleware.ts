@@ -1,5 +1,5 @@
-import { Injectable, NestMiddleware } from "@nestjs/common";
-import { NextFunction } from "express";
+import { Injectable, NestMiddleware } from '@nestjs/common'
+import { NextFunction } from 'express'
 
 // промежуточное ПО
 @Injectable()
@@ -9,7 +9,6 @@ export class LoggerMiddleware implements NestMiddleware {
         next()
     }
 }
-
 
 // функциональное промежуточное ПО
 // export function LoggerMiddleware(request: Request, response: Response, next: NextFunction) {
