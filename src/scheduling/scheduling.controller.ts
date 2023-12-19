@@ -35,13 +35,13 @@ export class SchedulingController {
 
     // создать новую задачу, которая будет выполняться на каждой 30 секунде
     @Post('add')
-    addCronJob(){
-      this.dynamicSchdulingService.addCronJob('newJob', 30)
+    addCronJob() {
+        this.dynamicSchdulingService.addCronJob('newJob', 30)
     }
 
     // удалить задачуу по имени
     @Post('delete')
-    deleteCronJob(){
-      this.dynamicSchdulingService.deleteCronJob('newJob')
+    deleteCronJob() {
+        this.dynamicSchdulingService.deleteCronJob('newJob')
     }
 }

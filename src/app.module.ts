@@ -14,17 +14,24 @@ import { CacheModule } from '@nestjs/cache-manager'
 import { CachingModule } from './caching/caching.module'
 import { SerializationModule } from './serialization/serialization.module'
 import { SchedulingModule } from './scheduling/scheduling.module'
+import { EventModule } from './event/event.module'
+import { EventEmitterModule } from '@nestjs/event-emitter'
 
 @Module({
     imports: [
         CatsModule,
-        CacheModule.register(),
+        CacheModule.register(),                     // подключение пакета cache
         ConfigModule.forRoot({
-            isGlobal: true, // сделать модуль глобальным
+            isGlobal: true,                             // сделать модуль глобальным
         }),
         CachingModule,
         SerializationModule,
         SchedulingModule,
+        EventModule,
+        EventEmitterModule.forRoot({                // подключение модуля для работы с событиями
+            wildcard: false,
+            delimiter: '.',
+        }),
     ],
     controllers: [AppController],
     providers: [AppService],
