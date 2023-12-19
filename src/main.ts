@@ -6,6 +6,7 @@ import { ForbiddenExceptionFilter } from './middleware/filters/forbidden-excepti
 import { RolesGuard } from './middleware/guards/roles.guard'
 import { LoggingInterceptor } from './middleware/interceptors/logging.interceptor'
 import { ValidationPipe } from '@nestjs/common'
+import * as compression from 'compression'
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
@@ -26,6 +27,9 @@ async function bootstrap() {
     // app.useGlobalInterceptors(new    LoggingInterceptor())
 
     app.useGlobalPipes(new ValidationPipe())
+
+    // использовать сжатие gzip для тела ответа
+    app.use(compression())
 
     await app.listen(3000)
 }
