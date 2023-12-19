@@ -16,6 +16,7 @@ import { SerializationModule } from './serialization/serialization.module'
 import { SchedulingModule } from './scheduling/scheduling.module'
 import { EventModule } from './event/event.module'
 import { EventEmitterModule } from '@nestjs/event-emitter'
+import { FileModule } from './file/file.module';
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter'
             wildcard: false,
             delimiter: '.',
         }),
+        FileModule,
     ],
     controllers: [AppController],
     providers: [AppService],
