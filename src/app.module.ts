@@ -13,6 +13,7 @@ import { ConfigModule } from '@nestjs/config'
 import { CacheModule } from '@nestjs/cache-manager'
 import { CachingModule } from './caching/caching.module'
 import { SerializationModule } from './serialization/serialization.module'
+import { SchedulingModule } from './scheduling/scheduling.module'
 
 @Module({
     imports: [
@@ -23,6 +24,7 @@ import { SerializationModule } from './serialization/serialization.module'
         }),
         CachingModule,
         SerializationModule,
+        SchedulingModule,
     ],
     controllers: [AppController],
     providers: [AppService],

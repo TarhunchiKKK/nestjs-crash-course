@@ -22,9 +22,9 @@ export class SerializationController {
             lastName: 'Dubatovka',
             password: '1234',
             role: {
-              title: 'Student',
-              age: 19
-            }
+                title: 'Student',
+                age: 19,
+            },
         })
     }
 }
