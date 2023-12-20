@@ -11,7 +11,7 @@ import { jwtConstants } from './constants'
             global: true,
             secret: jwtConstants.secret,
             signOptions: {
-                expiresIn: '60s',                               // токен  меняется каждые 60 секунд
+                expiresIn: '60m',                               // токен  меняется каждые 60 секунд
             }
         })
     ],

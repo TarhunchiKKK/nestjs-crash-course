@@ -21,7 +21,9 @@ export class AuthGuard implements CanActivate {
                     secret: jwtConstants.secret
                 }
             )
-            request['user'] = payload                                       // запись изменений в объект запроса
+            request['user'] = payload                                       // запись токена и ролей в объект запроса
+            console.log('User in AuthGuard: ')
+            console.log(request.user)
         } catch {
             throw new UnauthorizedException()
         }

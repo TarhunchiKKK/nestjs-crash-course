@@ -12,12 +12,12 @@ export class DynamicSchedulingService {
     constructor(private schedulerRegistry: SchedulerRegistry) {}
 
     // на каждой 5 секунде бедт вывод в консоль
-    @Cron('5 * * * * *', {
-        name: 'notification',
-    })
-    handleNotification() {
-        this.logger.debug('Notification')
-    }
+    // @Cron('5 * * * * *', {
+    //     name: 'notification',
+    // })
+    // handleNotification() {
+    //     this.logger.debug('Notification')
+    // }
 
     // остановить выполнение задачи
     stopNotification() {
