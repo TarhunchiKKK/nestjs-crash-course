@@ -1,10 +1,13 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt';
-import { UsersService } from 'src/users/users.service';
+import { JwtService } from '@nestjs/jwt'
+import { UsersService } from 'src/users/users.service'
 
 @Injectable()
 export class AuthService {
-    constructor(private usersService: UsersService, private jwtService: JwtService) {}
+    constructor(
+        private usersService: UsersService,
+        private jwtService: JwtService,
+    ) {}
 
     // логин (получение токена)
     async signIn(username: string, password: string): Promise<any> {
@@ -15,9 +18,13 @@ export class AuthService {
             throw new UnauthorizedException()
         }
         // формаирование jwt-токена
-        const payload = { id: user.id, username: user.username, roles: user.roles } 
+        const payload = {
+            id: user.id,
+            username: user.username,
+            roles: user.roles,
+        }
         return {
-            access_token: await this.jwtService.signAsync(payload)
+            access_token: await this.jwtService.signAsync(payload),
         }
     }
 }

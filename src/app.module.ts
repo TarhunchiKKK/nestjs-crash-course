@@ -19,6 +19,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter'
 import { FileModule } from './file/file.module'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
+import { CaslModule } from './casl/casl.module'
 
 @Module({
     imports: [
@@ -39,6 +40,7 @@ import { UsersModule } from './users/users.module'
         FileModule,
         AuthModule,
         UsersModule,
+        CaslModule,
     ],
     controllers: [AppController],
     providers: [AppService],

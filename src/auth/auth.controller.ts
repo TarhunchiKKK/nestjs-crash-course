@@ -1,4 +1,13 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common'
+import {
+    Body,
+    Controller,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Post,
+    Req,
+    UseGuards,
+} from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { SignInDto } from './dto/sign-in.dto'
 import { AuthGuard } from './guards/auth.guard'
@@ -16,17 +25,18 @@ export class AuthController {
         },
         {
             id: 2,
-            content:'b',
+            content: 'b',
         },
         {
             id: 3,
-            content: 'c'
+            content: 'c',
         },
         {
-            id: 4, 
-            content: 'd'
-        }
+            id: 4,
+            content: 'd',
+        },
     ]
+
     constructor(private readonly authService: AuthService) {}
 
     // получаем токен
@@ -50,7 +60,7 @@ export class AuthController {
     createPost(@Body() createPostDto: CreatePostDto) {
         const post = {
             id: this.posts.length + 1,
-            content: createPostDto.content
+            content: createPostDto.content,
         }
         this.posts.push(post)
         return post
