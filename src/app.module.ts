@@ -20,6 +20,7 @@ import { FileModule } from './file/file.module'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
 import { CaslModule } from './casl/casl.module'
+import { WebSocketsModule } from './web-sockets/web-sockets.module'
 
 @Module({
     imports: [
@@ -41,6 +42,7 @@ import { CaslModule } from './casl/casl.module'
         AuthModule,
         UsersModule,
         CaslModule,
+        WebSocketsModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -6,6 +6,6 @@ import { CaslAbilityFactory } from './casl-ability.factory'
 @Module({
     controllers: [CaslController],
     providers: [CaslService, CaslAbilityFactory],
-    exports: [CaslAbilityFactory]
+    exports: [CaslAbilityFactory],
 })
 export class CaslModule {}

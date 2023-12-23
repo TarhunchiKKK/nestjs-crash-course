@@ -25,12 +25,11 @@ export class CaslAbilityFactory {
         } else {
             // обычный автор может читать любые посты
             can(AuthorActions.Read, 'all')
-        } 
+        }
 
         // НЕ РАБОТАЕТ ПОЧЕМУ-ТО
         // обычный автор может менять посты, которые ему принадлежат
         can(AuthorActions.Update, Article, { authorId: author.id })
-        
 
         return build({
             detectSubjectType: (item) =>

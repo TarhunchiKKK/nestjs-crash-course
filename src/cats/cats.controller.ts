@@ -56,7 +56,7 @@ export class CatsController {
     ) {
         this.catsService.create(createCatDto)
     }
-
+ 
     @Get('redirect')
     @Redirect('https://nestjs.com', 301)
     public redirect(): void {}

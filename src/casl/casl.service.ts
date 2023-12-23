@@ -65,8 +65,7 @@ export class CaslService {
         const ability = this.caslAbilityFactory.createForAuthor(author)
         if (ability.can(AuthorActions.Create, Article)) {
             this.articles.push(article)
-        }
-        else throw new UnauthorizedException("You can't create new articles")
+        } else throw new UnauthorizedException("You can't create new articles")
     }
 
     // обновление записи (может только автор-хозяин или админ) - НЕ РАБОТАЕТ ПОЧЕМУ-ТО
@@ -78,16 +77,16 @@ export class CaslService {
         const index: number = this.articles.findIndex(
             (article) => article.id === articleId,
         )
-        console.log('Article:') 
+        console.log('Article:')
         console.log(this.articles[index])
-        
+
         console.log('Author:')
         console.log(author)
         const ability = this.caslAbilityFactory.createForAuthor(author)
         if (ability.can(AuthorActions.Update, this.articles[index])) {
             this.articles[index] = article
-        }
-        else throw new UnauthorizedException("You can't update another articles")
+        } else
+            throw new UnauthorizedException("You can't update another articles")
     }
 
     // удаление записи (может только админ)
@@ -99,9 +98,9 @@ export class CaslService {
             (article) => article.id === articleId,
         )
 
-        console.log('Article:') 
+        console.log('Article:')
         console.log(article)
-        
+
         console.log('Author:')
         console.log(author)
 
@@ -110,9 +109,6 @@ export class CaslService {
             this.articles = this.articles.filter(
                 (article) => article.id !== articleId,
             )
-        }
-        else throw new UnauthorizedException("You can't delete articles")
+        } else throw new UnauthorizedException("You can't delete articles")
     }
-
-    
 }
